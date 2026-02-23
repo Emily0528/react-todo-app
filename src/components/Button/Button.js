@@ -1,7 +1,7 @@
 import styles from './Button.module.scss';
 
 const TextInput = props => {
-    return <button className={styles.button} placeholder={props.placeholder} type="text">Search</button>
+    return (<button className={styles.button}>{props.children}</button>);
 }
 
 export default TextInput;
