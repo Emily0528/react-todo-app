@@ -27,6 +27,11 @@ const reducer = (state, action) => {
           }
         ]
       };
+      case 'SET_SEARCH':
+      return {
+        ...state,
+        searchString: action.payload
+      };
 
     default:
     return state;
