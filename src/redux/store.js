@@ -16,6 +16,17 @@ const reducer = (state, action) => {
           }
         ]
       };
+      case 'ADD_CARD':
+      return {
+        ...state,
+        cards: [
+          ...state.cards,
+          {
+            ...action.payload,
+            id: shortid()
+          }
+        ]
+      };
 
     default:
     return state;
