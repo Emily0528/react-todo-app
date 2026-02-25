@@ -13,6 +13,14 @@ export const addColumn = payload => ({
   type: 'ADD_COLUMN',
   payload
 });
+export const addCard = payload => ({
+  type: 'ADD_CARD',
+  payload
+});
+export const updateSearchString = payload => ({
+  type: 'SET_SEARCH',
+  payload
+});
 
 const reducer = (state, action) => {
   switch(action.type) {
