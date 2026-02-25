@@ -9,6 +9,10 @@ export const getFilteredCards = (state, columnId) =>
     strContains(card.title, state.searchString)
   );
 export const getAllColumns = state => state.columns;
+export const addColumn = payload => ({
+  type: 'ADD_COLUMN',
+  payload
+});
 
 const reducer = (state, action) => {
   switch(action.type) {
