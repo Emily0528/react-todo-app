@@ -8,6 +8,7 @@ export const getFilteredCards = (state, columnId) =>
     card.columnId === columnId &&
     strContains(card.title, state.searchString)
   );
+export const getAllColumns = state => state.columns;
 
 const reducer = (state, action) => {
   switch(action.type) {
