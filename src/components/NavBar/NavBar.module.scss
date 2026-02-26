@@ -33,7 +33,12 @@
     text-decoration: none;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
+}
+
+.linkActive {
+  color: $color-warning !important;
+  font-weight: bold;
 }
