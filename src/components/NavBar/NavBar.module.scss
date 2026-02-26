@@ -1,0 +1,39 @@
+@import '../../styles/settings.scss';
+
+.navbar {
+  width: 100%;                       
+  background-color: darken($color-dark, 3%);
+  padding: 0.5rem 0;
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;   
+  align-items: center; 
+}
+.logo {
+  font-size: 24px;                   
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.navList {
+  list-style: none;
+  display: flex;                  
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline-block;        
+  }
+
+  a {
+    color: #ecf0f1;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
