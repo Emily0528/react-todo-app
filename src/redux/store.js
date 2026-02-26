@@ -8,6 +8,8 @@ export const getFilteredCards = (state, columnId) =>
     card.columnId === columnId &&
     strContains(card.title, state.searchString)
   );
+export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId)
+export const getAllLists = state => state.lists;
 export const getAllColumns = state => state.columns;
 export const addColumn = payload => ({
   type: 'ADD_COLUMN',
