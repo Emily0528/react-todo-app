@@ -2,28 +2,24 @@ import styles from './List.module.scss';
 import Column from '../Column/Column';
 import ColumnForm from '../ColumnForm/ColumnForm';
 import { useSelector } from 'react-redux';
-import { getAllColumns, getAllLists } from '../../redux/store';
+import { getListById, getColumnsByList   } from '../../redux/store';
 
 const List = () => {
 
-  const list = useSelector(state =>
-    getAllLists(state).find(list => list.id === 1)
-  );
+  const listData = useSelector(state => getListById(state, 1));
 
-  const columns = useSelector(state =>
-    getAllColumns(state).filter(column => column.listId === 1)
-  );
+  const columns = useSelector(state => getColumnsByList(state, 1));
 
   return (
     <div className={styles.list}>
       <header className={styles.header}>
         <h2 className={styles.title}>
-          {list.title}
+          {listData.title}
         </h2>
       </header>
 
       <p className={styles.description}>
-        {list.description}
+        {listData.description}
       </p>
 
       <section className={styles.columns}>
