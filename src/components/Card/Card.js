@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 import styles from './Card.module.scss';
 import { useDispatch } from 'react-redux';
-import { toggleFavoriteCard } from '../../redux/actions';
+import { toggleFavoriteCard } from '../../redux/cardsRedux';
 import clsx from 'clsx';
 
 

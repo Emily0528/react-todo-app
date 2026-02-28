@@ -2,7 +2,7 @@ import styles from './Favorite.module.scss';
 import Container from '../Container/Container';
 import PageTitle from '../PageTitle/PageTitle';
 import { useSelector } from 'react-redux';
-import { getAllCards } from '../../redux/store';
+import { getAllCards } from '../../redux/cardsRedux';
 import Card from '../Card/Card';
 import { Navigate } from 'react-router';
 
