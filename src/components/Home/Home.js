@@ -1,5 +1,5 @@
 import Hero from '../Hero/Hero';
-import SearchForm from '../SearchForm/SearchForm';
+//import SearchForm from '../SearchForm/SearchForm';
 import { useSelector } from 'react-redux';
 import { getAllLists } from '../../redux/store';
 //import { Link } from 'react-router-dom';
@@ -14,7 +14,6 @@ const Home = () => {
   return (
     <>
       <Hero />
-      <SearchForm />
       <Lists />      
     </>
   );
