@@ -9,11 +9,11 @@ const List = () => {
   const { listId } = useParams();
   
   const listData = useSelector(state =>
-    getListById(state, Number(listId))
+    getListById(state, (listId))
   );
 
   const columns = useSelector(state =>
-    getColumnsByList(state, Number(listId))
+    getColumnsByList(state, (listId))
   );
 
   return (
