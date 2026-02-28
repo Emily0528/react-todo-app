@@ -14,6 +14,7 @@ export const getColumnsByList = ({ columns }, listId) =>
 export const getAllLists = state => state.lists;
 //export const getAllLists = ({ lists }) => lists;
 export const getAllColumns = state => state.columns;
+export const addList = payload => ({ type: 'ADD_LIST', payload });
 export const addColumn = payload => ({
   type: 'ADD_COLUMN',
   payload
@@ -29,6 +30,16 @@ export const updateSearchString = payload => ({
 
 const reducer = (state, action) => {
   switch(action.type) {
+
+    case 'ADD_LIST':
+      return {
+        ...state,
+        lists: [
+          ...state.lists, 
+          { 
+            ...action.payload, 
+            id: shortid() }] 
+      };
 
     case 'ADD_COLUMN':
       return {
