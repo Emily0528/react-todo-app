@@ -11,3 +11,13 @@
     justify-content: space-between;
     font-weight: bold;
 }
+
+.fav {
+  cursor: pointer;
+  color: #ccc;
+  margin-left: 0.5rem;
+}
+
+.favActive {
+  color: $color-success;
+}

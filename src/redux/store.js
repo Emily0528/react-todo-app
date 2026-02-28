@@ -2,7 +2,8 @@ import { createStore } from 'redux';
 import shortid from 'shortid';
 import initialState from './initialState';
 import { strContains } from '../utils/strContains';
-//selectors
+import { addList, addColumn, addCard, updateSearchString } from '../redux/actions';
+
 export const getFilteredCards = (state, columnId) =>
   state.cards.filter(card =>
     card.columnId === columnId &&
@@ -11,22 +12,14 @@ export const getFilteredCards = (state, columnId) =>
 export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId);
 export const getColumnsByList = ({ columns }, listId) =>
   columns.filter(column => column.listId === listId);
+export const getAllCards = ({ cards }) => cards;
 export const getAllLists = state => state.lists;
-//export const getAllLists = ({ lists }) => lists;
 export const getAllColumns = state => state.columns;
-export const addList = payload => ({ type: 'ADD_LIST', payload });
-export const addColumn = payload => ({
-  type: 'ADD_COLUMN',
-  payload
+export const toggleCardFavorite = payload => ({
+  type: 'TOGGLE_CARD_FAVORITE',
+  payload,
 });
-export const addCard = payload => ({
-  type: 'ADD_CARD',
-  payload
-});
-export const updateSearchString = payload => ({
-  type: 'SET_SEARCH',
-  payload
-});
+
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -48,7 +41,8 @@ const reducer = (state, action) => {
           ...state.columns,
           {
             ...action.payload,
-            id: shortid()
+            id: shortid(),
+            listId: action.payload.listId, 
           }
         ]
       };
@@ -59,7 +53,9 @@ const reducer = (state, action) => {
           ...state.cards,
           {
             ...action.payload,
-            id: shortid()
+            id: shortid(),
+            listId: action.payload.listId,
+            isFavorite: false,
           }
         ]
       };
@@ -67,6 +63,15 @@ const reducer = (state, action) => {
       return {
         ...state,
         searchString: action.payload
+      };
+      case 'TOGGLE_CARD_FAVORITE':
+      return {
+        ...state,
+        cards: state.cards.map(card =>
+        card.id === action.payload
+        ? { ...card, isFavorite: !card.isFavorite }
+        : card
+        ),
       };
 
     default:
