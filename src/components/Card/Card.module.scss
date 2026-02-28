@@ -9,7 +9,13 @@
     border-radius: $radius;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem; 
 }
 
 .favoriteIcon {
@@ -20,4 +26,15 @@
 
 .favoriteActive {
   color: $color-success;
+}
+
+.deleteIcon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #888;
+  transition: 0.2s;
+
+  &:hover {
+    color: $color-warning;
+  }
 }
