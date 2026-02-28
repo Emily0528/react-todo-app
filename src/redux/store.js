@@ -1,18 +1,9 @@
 import { createStore, combineReducers } from 'redux';
-import shortid from 'shortid';
 import initialState from './initialState';
 import listsReducer from './listsRedux';
 import columnsReducer from './columnsRedux';
 import cardsReducer from './cardsRedux';
 import searchStringReducer from './searchStringRedux';
-import { strContains } from '../utils/strContains';
-
-
-
-
-
-
-
 
 const subreducers = {
   lists: listsReducer,
