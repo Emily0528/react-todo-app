@@ -2,7 +2,7 @@ import { createStore } from 'redux';
 import shortid from 'shortid';
 import initialState from './initialState';
 import { strContains } from '../utils/strContains';
-import { addList, addColumn, addCard, updateSearchString } from '../redux/actions';
+import { addList, addColumn, addCard, updateSearchString } from './actions';
 
 export const getFilteredCards = (state, columnId) =>
   state.cards.filter(card =>
@@ -15,10 +15,6 @@ export const getColumnsByList = ({ columns }, listId) =>
 export const getAllCards = ({ cards }) => cards;
 export const getAllLists = state => state.lists;
 export const getAllColumns = state => state.columns;
-export const toggleCardFavorite = payload => ({
-  type: 'TOGGLE_CARD_FAVORITE',
-  payload,
-});
 
 
 const reducer = (state, action) => {
@@ -67,11 +63,17 @@ const reducer = (state, action) => {
       case 'TOGGLE_CARD_FAVORITE':
       return {
         ...state,
-        cards: state.cards.map(card =>
-        card.id === action.payload
-        ? { ...card, isFavorite: !card.isFavorite }
-        : card
-        ),
+        cards: state.cards.map(card => {
+        //console.log('CARD ID:', card.id);
+        //console.log('PAYLOAD:', action.payload);
+        //console.log('EQUAL?', card.id === action.payload);
+         if (card.id === action.payload) {
+            //console.log('MATCH FOUND!');
+            return { ...card, isFavorite: !card.isFavorite };
+          }
+
+        return card;
+        }),
       };
 
     default:

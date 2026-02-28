@@ -7,18 +7,30 @@ import Card from '../Card/Card';
 import { Navigate } from 'react-router';
 
 const Favorite = () => {
+  /*
   const favoriteCards = useSelector(state =>
     getAllCards(state).filter(card => card.isFavorite)
-  );
+  );*/
+
+  const favoriteCards = useSelector(state => {
+  const all = getAllCards(state);
+  const fav = all.filter(card => card.isFavorite);
+  //console.log('FAVORITE CARDS:', fav);
+  return fav;
+});
 
   if (favoriteCards.length === 0) return <Navigate to="/" />;
   return (
-    <Container>
+    <Container className={styles.favorite}>
       <PageTitle>Favorite</PageTitle>
-      <p>Here you can find your favorite cards.</p>
-      <div lassName={styles.favorite}>
+      <div className={styles.listLink}>
         {favoriteCards.map(card => (
-          <Card key={card.id} {...card} />
+          <Card 
+            key={card.id} 
+            id={card.id} 
+            title={card.title} 
+            isFavorite={card.isFavorite} 
+          />
         ))}
       </div>
     </Container>

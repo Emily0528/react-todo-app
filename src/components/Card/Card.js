@@ -2,12 +2,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar as faStarEmpty } from '@fortawesome/free-regular-svg-icons';
 import styles from './Card.module.scss';
 import { useDispatch } from 'react-redux';
-//import { toggleFavoriteCard } from '../../redux/store';
 import { toggleFavoriteCard } from '../../redux/actions';
 import clsx from 'clsx';
 
 
 const Card = ({ id, title, isFavorite  }) => {
+  //console.log('Card id:', id);
   const dispatch = useDispatch();
 
   const handleFavorite = () => {

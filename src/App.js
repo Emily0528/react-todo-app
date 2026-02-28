@@ -17,7 +17,6 @@ const App = () => {
           <Route path="/favorite" element={<Favorite />} />
           <Route path="/about" element={<About />} />
           <Route path="/list/:listId" element={<List />} />
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
