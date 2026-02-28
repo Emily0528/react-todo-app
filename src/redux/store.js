@@ -1,6 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 import shortid from 'shortid';
 import initialState from './initialState';
+import listsReducer from './listsRedux';
+import columnsReducer from './columnsReducer';
+import cardsReducer from './cardsReducer';
+import searchStringReducer from './searchStringReducer';
 import { strContains } from '../utils/strContains';
 
 export const getFilteredCards = (state, columnId) =>
@@ -23,44 +27,6 @@ const subreducers = {
 }
 
 const reducer = combineReducers(subreducers);
-
-const listsReducer = (statePart = [], action) => {
-  switch(action.type) {
-    case 'ADD_LIST':
-      return [...statePart, { ...action.payload, id: shortid() }];
-    default:
-      return statePart;
-  }
-}
-
-const columnsReducer = (statePart = [], action) => {
-  switch(action.type) {
-    case 'ADD_COLUMN':
-      return [...statePart, { ...action.payload, id: shortid() }];
-    default:
-      return statePart;
-  }
-}
-
-const cardsReducer = (statePart = [], action) => {
-  switch(action.type) {
-    case 'ADD_CARD':
-      return [...statePart, { ...action.payload, id: shortid() }];
-    case 'TOGGLE_CARD_FAVORITE':
-      return statePart.map(card => (card.id === action.payload) ? { ...card, isFavorite: !card.isFavorite } : card);
-    default:
-      return statePart;
-  }
-}
-
-const searchStringReducer = (statePart = '', action) => {
-  switch(action.type) {
-    case 'UPDATE_SEARCHSTRING':
-      return action.payload
-    default:
-      return statePart;
-  }
-}
 
 const store = createStore(
   reducer,
